@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- 通过package, 可以直接指定package的名字， mybatis会自动扫描你指定包下面的javabean, 并且默认设置一个别名，默认的名字为： 
+			javabean 的首字母小写的非限定类名来作为它的别名。 也可在javabean 加上注解@Alias 来自定义别名， 例如： @Alias(user) 
+			<package name="model"/> -->
+
+		<typeAlias alias="buyer" type="model.Buyer"/>  
+		<typeAlias alias="BuyerExample" type="model.BuyerExample" />
+		<typeAlias alias="Cashmanager" type="model.Cashmanager" />
+		<typeAlias alias="CashmanagerExample" type="model.CashmanagerExample" />
+		<typeAlias alias="Inventorycontroller" type="model.Inventorycontroller" />
+		<typeAlias alias="InventorycontrollerExample" type="model.InventorycontrollerExample" />
+		<typeAlias alias="Moneyapplicationform" type="model.Moneyapplicationform" />
+		<typeAlias alias="MoneyapplicationformExample" type="model.MoneyapplicationformExample" />
+		<typeAlias alias="Planner" type="model.Planner" />
+		<typeAlias alias="PlannerExample" type="model.PlannerExample" />
+		<typeAlias alias="Purchaseorder" type="model.Purchaseorder" />
+		<typeAlias alias="PurchaseorderExample" type="model.PurchaseorderExample" />
+		<typeAlias alias="Purchaseplanning" type="model.Purchaseplanning" />
+		<typeAlias alias="PurchaseplanningExample" type="model.PurchaseplanningExample" />
+		<typeAlias alias="Purchasingfundplan" type="model.Purchasingfundplan" />
+		<typeAlias alias="PurchasingfundplanExample" type="model.PurchasingfundplanExample" />
+		<typeAlias alias="Supplier" type="model.Supplier" />
+		<typeAlias alias="SupplierExample" type="model.SupplierExample" />
+		<typeAlias alias="Userlogin" type="model.Userlogin" />
+		<typeAlias alias="UserloginExample" type="model.UserloginExample" />
+		<typeAlias alias="Warehousingentry" type="model.Warehousingentry" />
+		<typeAlias alias="WarehousingentryExample" type="model.WarehousingentryExample" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/BuyerMapper.xml" />
+		<mapper resource="mapper/CashmanagerMapper.xml" />
+		<mapper resource="mapper/InventorycontrollerMapper.xml" />
+		<mapper resource="mapper/MoneyapplicationformMapper.xml" />
+		<mapper resource="mapper/PlannerMapper.xml" />
+		<mapper resource="mapper/PurchaseorderMapper.xml" />
+		<mapper resource="mapper/PurchaseplanningMapper.xml" />
+		<mapper resource="mapper/PurchasingfundplanMapper.xml" />
+		<mapper resource="mapper/SupplierMapper.xml" />
+		<mapper resource="mapper/UserloginMapper.xml" />
+		<mapper resource="mapper/WarehousingentryMapper.xml" />
+	</mappers>
+</configuration> 

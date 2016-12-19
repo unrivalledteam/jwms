@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+     http://www.springframework.org/schema/context  
+   http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+     http://www.springframework.org/schema/mvc  
+     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+
+	<!-- 注解支持 -->
+	<!-- <context:annotation-config /> -->
+	<!-- 组件扫描com.test目录下的所有文件 -->
+	<context:component-scan base-package="service" />  
+	<context:component-scan base-package="model" />  
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<context:property-placeholder location="classpath:jdbc.properties" />
+	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<!-- 创建SqlSessionFactory，同时指定数据源 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 指定sqlMapConfig总配置文件，订制的environment在spring容器中不在生效 -->
+		<!-- 
+		<property name="configLocation" value="classpath:/mybatisConfig.xml" /> -->
+		<!--指定实体类映射文件，可以指定同时指定某一包以及子包下面的所有配置文件，mapperLocations和configLocation有一个即可，当需要为实体类指定别名时，可指定configLocation属性，再在mybatis总配置文件中采用mapper引入实体类映射文件 -->
+		<property name="mapperLocations" value="classpath*:*/persistent/*.xml" 
+			/>
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="dao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+	<!-- 配置事务管理器，注意这里的dataSource和SqlSessionFactoryBean的dataSource要一致，不然事务就没有作用了 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 注解方式配置事物 -->  
+    <!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->  
+  
+    <!-- 拦截器方式配置事物 -->  
+    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">  
+        <tx:attributes>  
+            <tx:method name="insert*" propagation="REQUIRED" />  
+            <tx:method name="update*" propagation="REQUIRED" />  
+            <tx:method name="delete*" propagation="REQUIRED" />  
+  
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true" />  
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true" />  
+            <tx:method name="select*" propagation="SUPPORTS" read-only="true" />  
+  
+        </tx:attributes>  
+    </tx:advice>  
+    
+    <!-- Spring aop事务管理
+    <aop:config>  
+        <aop:pointcut id="transactionPointcut"  
+            expression="execution(* service..*Impl.*(..))" />  
+        <aop:advisor pointcut-ref="transactionPointcut"  
+            advice-ref="transactionAdvice" />  
+    </aop:config>  
+	 -->  
+	<!-- 
+	<bean id="DRM_T_DICT_MemcacheServiceImpl" class="service.DRM_T_DICT_MemcacheServiceImpl"></bean>
+	 -->
+	 
+	<!-- mapper bean
+	<bean id="memcacheDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="dao.DRM_T_DICT_MemcacheDAO" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+ -->
+
+
+
+
+	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> <property 
+		name="basePackage" value="com.primeton.drm.**.persistent" /> <property name="sqlSessionFactoryBeanName" 
+		value="sqlSessionFactory_drm" /> </bean> <bean id="sequenceGenerator_drm" 
+		class="com.primeton.dsp.infra.spring.sequence.DefaultSequenceGenerator"></bean> 
+		<bean id="assetsServlet" class="com.primeton.drm.infra.http.servlet.AssetsServlet"></bean> -->
+</beans>
