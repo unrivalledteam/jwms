@@ -15,8 +15,7 @@
 	<!-- 注解支持 -->
 	<!-- <context:annotation-config /> -->
 	<!-- 组件扫描com.test目录下的所有文件 -->
-	<context:component-scan base-package="service" />  
-	<context:component-scan base-package="model" />  
+	<context:component-scan base-package="cn.zp.jwms.**.service" />  
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
@@ -41,7 +40,7 @@
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="dao" />
+		<property name="basePackage" value="cn.zp.jwms.**.persistent" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
