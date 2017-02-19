@@ -238,4 +238,15 @@
   <select id="getPasswordByLoginName" resultMap="BaseResultMap" parameterType="java.lang.String">
   	select * from t_user t where t.login_name=#{loginName}
   </select>
+  
+  <insert id="saveLoginLog" parameterType="cn.zp.jwms.common.vo.LoginLog">
+  	insert into t_login_log
+  	values(
+  		#{loginName,jdbcType=VARCHAR},
+  		#{loginPassword,jdbcType=VARCHAR},
+  		#{loginTime,jdbcType=VARCHAR},
+  		#{loginIP,jdbcType=VARCHAR},
+  		#{loginMessage,jdbcType=VARCHAR}
+  	)
+  </insert>
 </mapper>

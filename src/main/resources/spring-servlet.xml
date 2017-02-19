@@ -75,6 +75,7 @@
 	<mvc:resources location="/css/" mapping="/css/**" />
 	<mvc:resources location="/img/" mapping="/img/**" />
 	<mvc:resources location="/fonts/" mapping="/fonts/**" />
+	<mvc:resources location="/showDialog/" mapping="/showDialog/**" />
 	
 
 </beans>  

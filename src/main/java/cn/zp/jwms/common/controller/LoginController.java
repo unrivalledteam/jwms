@@ -37,6 +37,12 @@ public class LoginController {
 		vo.setUserName(vo.getUserName().trim());
 		vo.setPassword(vo.getPassword().trim());
 		User user = loginService.checkLogin(vo);
+		String loginMessage = user==null?"用户名或密码错误":"登录成功";
+		try {
+			loginService.saveLoginLog(vo,request,loginMessage);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		if (user != null) {
 			request.getSession().setAttribute("userID", user.getUserId());
 			request.getSession().setAttribute("userName", user.getUserName());

@@ -6,6 +6,8 @@
 <head>
 <title>登录(Login)</title>
 <link rel="stylesheet" href="<%=path %>/css/supersized.css">
+<script src="<%=path %>/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="<%=path %>/js/jquery.validate.min.js"></script>
 <script src="<%=path %>/js/supersized.3.2.7.min.js"></script>
 <script type="text/javascript">
 jQuery(function($){
@@ -71,7 +73,7 @@ $(document).ready(function() {
          errorPlacement : function(error, element) {  
       	   element.parent('div').append(error);  
          }  
-   }); 
+   	}); 
 	 $("#btnSubmit").on("click",function(){
 		 $("#loginMessageFont").hide();
 	 });

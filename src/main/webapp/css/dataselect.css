@@ -2,7 +2,7 @@ textarea{resize:none; outline:none; overflow:auto;}
 .clearfix{zoom:1;}
 .clearfix:after{clear: both;content: " ";display: block;font-size: 0;height: 0;visibility: hidden}
 .spacer{display:none;}
-.tjsx_title{ background:#30a2e8; width:100%; min-width:1130px;font-size:14px; color:#fff; height:30px; line-height:30px; padding-left:10px;}
+.tjsx_title{ background:#30a2e8; width:100%;font-size:14px; color:#fff; height:30px; line-height:30px; padding-left:10px;}
 /*分类*/
 .filtrate_list li,.list_content,.other_select_con,.other_select_con_list{zoom:1; list-style-type:none;}
 .filtrate_list li:after,.list_content:after,.other_select_con:after,.other_select_con_list:after{ content: '.'; height: 0; display: block; clear: both; visibility: hidden; }
@@ -19,7 +19,7 @@ textarea{resize:none; outline:none; overflow:auto;}
 .filtrate_box .cloth_slide_btn:hover .slide_up{background-position:0 -18px;}
 .filtrate_box a{color: #666;}
 .nicescroll-rails{border-radius: 5px;}
-.filtrate_box .filtrate_list{border:1px solid #e3e3e3;width:100%;min-width:1130px;margin:0; padding:0; background:#ffffff;background-color: #ffffff;overflow: hidden;position:relative;}
+.filtrate_box .filtrate_list{border:1px solid #e3e3e3;width:100%;margin:0; padding:0; background:#ffffff;background-color: #ffffff;overflow: hidden;position:relative;}
 .filtrate_box ul.list_show{height:auto;}
 .filtrate_list li.child_li{border-bottom:1px dotted #e3e3e3;position: relative;vertical-align: bottom;}
 .filtrate_list li.child_li a{color:#646464;}
@@ -34,7 +34,7 @@ textarea{resize:none; outline:none; overflow:auto;}
 .filtrate_list li .list_right .choose_on{background:#acd062; color:#ffffff;  margin:10px 20px; padding:5px 10px;}
 .filtrate_list li .list_right .clearfix span{ border:1px solid #cccccc; margin:5px 10px; padding:2px 10px;  font-family: "Microsoft YaHei" ! important;}
 .filtrate_list li .list_right .choose_on .btn{color:#ffffff;}
- .bac_bl{background:#edf7f9;min-width:1130px; }
+ .bac_bl{background:#edf7f9; }
 .filtrate_list .list_right .list_content span a{display:inline-block;padding:0px 19px 0 5px;line-height:20px;height: 20px;color: #999999;padding-right:0;margin-right:19px;white-space:nowrap;*vertical-align: baseline;}
 .filtrate_list .list_right .list_content span a:hover,.filtrate_list .list_right .list_content span a.active{color: #fb3433;text-decoration: underline;}
 .filtrate_list .list_right .list_content span a.on,.filtrate_list .list_right .list_content span a.on:hover{border-color: #ccc;color: #666;text-decoration: none;padding-right:19px;margin-right:0;}

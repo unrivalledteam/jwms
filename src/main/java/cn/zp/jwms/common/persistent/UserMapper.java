@@ -1,9 +1,10 @@
 package cn.zp.jwms.common.persistent;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import cn.zp.jwms.common.vo.LoginQueryVO;
+import cn.zp.jwms.common.vo.LoginLog;
 import cn.zp.jwms.common.vo.User;
 import cn.zp.jwms.common.vo.UserExample;
 
@@ -31,4 +32,6 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
 	User getPasswordByLoginName(String loginName);
+
+	void saveLoginLog(LoginLog loginLog);
 }
